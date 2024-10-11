@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="container-in">
+            <h1 class="headding">Contact Us</h1>
+            <p class="para">Do you have any queries or suggestions? Kindly send your<br>
+                request details using the following form:</p>
+            <form class="form" onsubmit="sendEmail(); reset(); return false;">
+                <input type="text" id="name" placeholder="Your name" required>
+                <input type="email" id="email" placeholder="Your email" required>
+                <input type="text" id="phone" placeholder="Mobile number" required>
+                <input type="text" id="city" placeholder="Location" required>
+                <textarea name="message" id="message" rows="4" placeholder="How can we help you?" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail(){
+            Email.send({
+            Host : "smtp.elasticemail.com",
+            Port : 2525,
+            Username : "rokkamanil07@gmail.com",
+            Password : "4F96B0A717446D310426142FFE452B5EC7BD",
+            To : 'rokkamanil07@gmail.com',
+            From : document.getElementById("email").value,
+            Subject : "Introduction",
+            Body : "Name: " +document.getElementById("name").value
+                        + "<br> Email: " +document.getElementById("email").value
+                        + "<br> Phone Number: " + document.getElementById("phone").value
+                        + "<br> Location: " + document.getElementById("city").value
+                        + "<br> Message: " + document.getElementById("message").value
+            }).then(
+            message => alert("Successfully")
+            ).catch(
+                message => alert("Some error: "+error)
+            );
+            // console.log(document.getElementById("name").value);
+            // console.log(document.getElementById("email").value);
+            // console.log(document.getElementById("phone").value);
+            // console.log(document.getElementById("city").value);
+            // console.log(document.getElementById("message").value);
+     }
+ </script>
+</body>
+</html>
